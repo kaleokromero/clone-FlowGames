@@ -1,0 +1,26 @@
+.teste {
+  font-family: 'Gill Sans', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 0 25px 10px;
+  position: relative;
+  vertical-align: sub;
+}
+.teste-xg {
+  font-family: 'Gill Sans', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 0 25px 10px;
+  position: relative;
+  vertical-align: sub;
+}
