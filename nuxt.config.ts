@@ -9,6 +9,11 @@ export default defineNuxtConfig({
       brands: ['threads', 'x-twitter', 'youtube', 'spotify', 'linkedin', 'tiktok', 'instagram', 'discord'],
     },
   },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
+    },
+  },
   css: ['@/assets/style/style.css'],
   router: {
     options: {

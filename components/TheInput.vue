@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="border-b-4 border-yellow-400">
+    <div class="border-b-4 border-[#fef500]">
       <div class="flex justify-between items-baseline">
-        <label for="email" class="text-yellow-400 font-bold">E-MAIL</label>
+        <label for="email" class="text-[#fef500] font-bold">E-MAIL</label>
         <span>
           <input
             id="email"

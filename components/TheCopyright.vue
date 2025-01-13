@@ -1,6 +1,6 @@
 <template>
-  <div class="border-t border-[#8c8c8c] flex justify-between pb-5">
-    <p class="py-5">
+  <div class="flex justify-between items-center">
+    <p class="p-10">
       © 2024 Flow Games. Todos os direitos reservados. <br />
       Desenvolvido por
       <span class="underline">Wolfvision</span>
@@ -8,7 +8,6 @@
     <div
       v-for="(image, id) in flowEnterprises"
       :key="id"
-      class="flex justify-between items-center"
     >
       <img :src="image.uri" alt="us" class="w-4/5" />
     </div>

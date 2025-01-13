@@ -1,31 +1,31 @@
 <template>
-  <div class="h-full">
+  <div>
     <img
       src="../assets/img/footer-bar.jpg"
       alt="footer image"
       class="bg-purple-600 w-full"
     />
 
-    <div class="bg-[#131313] text-white">
+    <div class="bg-[#131313] p-10">
       <div
-        class="bg-[url('/assets/img/footer-background.jpg')] h-96 container mx-auto py-10"
+        class="bg-[url('/assets/img/footer-background.jpg')] container justify-self-center"
       >
-        <div class="grid grid-cols-6">
-          <div class="mt-3" v-for="(content, id) in information" :key="id">
+        <div class="grid grid-cols-6 text-white px-10">
+          <div class="py-5" v-for="(content, id) in information" :key="id">
             <h1 class="teste-xg">{{ content.partner }}</h1>
             <ul class="mb-5">
               <li
                 v-for="(options, id) in content.options"
                 :key="id"
-                class="ms-2"
+                class="ms-2 py-1"
               >
-                <p>
+                <p class="text-lg">
                   {{ options.name }}
                 </p>
               </li>
             </ul>
           </div>
-          <div class="col-span-2 mt-3">
+          <div class="col-span-2 py-5 px-6">
             <div class="flex">
               <font-awesome icon="bolt-lightning" class="h-7 mt-2" />
               <div>
@@ -35,8 +35,7 @@
             </div>
           </div>
         </div>
-
-        <TheCopyright />
+        <TheCopyright class="border-t border-[#8c8c8c] text-white font-semibold"/>
       </div>
     </div>
   </div>
@@ -88,7 +87,7 @@ export default {
           { name: 'Vênus Podcast' }
         ]
       }
-    ],
+    ]
   })
 }
 </script>
