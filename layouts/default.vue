@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col h-screen">
-    <AppHeader class="sticky shadow-md z-10"/>
+    <AppHeader class="fixed w-full top-0 shadow-md z-10"/>
     <div class="grow">
       <slot />
     </div>

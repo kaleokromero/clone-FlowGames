@@ -30,7 +30,7 @@
               <font-awesome icon="bolt-lightning" class="h-7 mt-2" />
               <div>
                 <h1 class="teste-xg">CADASTRE-SE EM NOSSA NEWSLETTER</h1>
-                <TheInput />
+                <TheInput  class="py-10"/>
               </div>
             </div>
           </div>

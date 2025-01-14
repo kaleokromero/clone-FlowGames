@@ -5,7 +5,18 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@vesp/nuxt-fontawesome'],
   fontawesome: {
     icons: {
-      solid: ['magnifying-glass', 'bolt-lightning', 'cloud', 'dollar-sign', 'cart-shopping', 'chevron-down', 'arrow-right', 'trophy'],
+      solid: [
+        'magnifying-glass',
+        'bolt-lightning',
+        'cloud',
+        'dollar-sign',
+        'cart-shopping',
+        'chevron-down',
+        'arrow-right',
+        'trophy',
+        'film',
+        'gamepad',
+      ],
       brands: ['threads', 'x-twitter', 'youtube', 'spotify', 'linkedin', 'tiktok', 'instagram', 'discord'],
     },
   },

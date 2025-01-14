@@ -1,12 +1,11 @@
 <template>
   <header class="bg-[#131313D9]">
-    <div class="container mx-auto flex items-center justify-between gap-5">
+    <div class="container mx-auto w-7/12 flex items-center justify-between gap-5">
       <img
         src="../assets/img/header-image.jpg"
         alt="header-image"
-        class="hover:scale-125 duration-300 w-16"
+        class="hover:scale-110 duration-300 w-24"
       />
-
       <div class="grow">
         <div class="flex justify-between border-b border-[#8c8c8c] py-3 mb-5">
           <div>
@@ -22,7 +21,6 @@
               />
             </a>
           </div>
-
           <div class="flex items-center">
             <input
               v-if="searchBar"
@@ -30,7 +28,6 @@
               class="bg-transparent border text-lg font-normal text-[#8c8c8c]"
               placeholder="O que você procura?"
             />
-
             <button @click="searchBar = !searchBar" class="px-5 pt-1">
               <font-awesome
                 icon="magnifying-glass"
@@ -39,25 +36,27 @@
             </button>
           </div>
         </div>
-
         <div class="flex flex-row gap-4">
           <span v-for="(item, id) in menu" :key="id" class="teste">
-            <a href="menu"> {{ item.route }}</a>
+            <a href="menu"> {{ item.route }}
             <button
               v-if="item.children_routes != null"
               class="ml-2"
-              @mouseover="submenu = !submenu"
+              @mouseenter="submenu = !submenu"
             >
+            <div v-if="submenu === true">
               <TheSubMenu
-                v-if="item.children_routes != null"
                 :list="item.children_routes"
                 class="submenu"
               />
+            </div>
+              
               <font-awesome icon="chevron-down" class="text-yellow-300 w-5" />
               <span
                 class="absolute bottom-0 left-0 w-full h-0 bg-yellow-300 transition-all duration-200 ease-out group-hover:h-1"
               ></span>
             </button>
+          </a>
           </span>
         </div>
       </div>
