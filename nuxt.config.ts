@@ -16,6 +16,7 @@ export default defineNuxtConfig({
         'trophy',
         'film',
         'gamepad',
+        'circle-play',
       ],
       brands: ['threads', 'x-twitter', 'youtube', 'spotify', 'linkedin', 'tiktok', 'instagram', 'discord'],
     },

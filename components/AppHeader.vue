@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-[#131313D9]">
+  <header class="bg-[#131313D9] backdrop-blur-sm">
     <div class="container mx-auto w-7/12 flex items-center justify-between gap-5">
       <img
         src="../assets/img/header-image.jpg"
