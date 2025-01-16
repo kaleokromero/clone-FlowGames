@@ -25,7 +25,7 @@
             <input
               v-if="searchBar"
               type="text"
-              class="bg-transparent border text-lg font-normal text-[#8c8c8c]"
+              class="bg-transparent text-lg font-normal text-[#8c8c8c]"
               placeholder="O que você procura?"
             />
             <button @click="searchBar = !searchBar" class="px-5 pt-1">
@@ -132,7 +132,7 @@ export default {
         children_routes: null
       }
     ],
-    searchBar: true,
+    searchBar: false,
     submenu: false
   }),
   methods: {
