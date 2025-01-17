@@ -2,7 +2,14 @@
   <div class="sticky">
     <ul v-for="(item, id) in list" :key="id">
       <slot>
-        <li style="list-style-type:square; padding-top: 8px; font-weight: 800; font-size: 12px;">
+        <li
+          style="
+            list-style-type: square;
+            padding-top: 8px;
+            font-weight: 800;
+            font-size: 12px;
+          "
+        >
           {{ item.name }}
         </li>
       </slot>
@@ -13,25 +20,15 @@
 <script>
 export default {
   props: {
-    list: Array
+    list: {
+      type: Array,
+      requirered: true
+    }
   }
 }
 </script>
 
 <style scoped>
-/* .teste {
-  font-family: 'Gill Sans', sans-serif;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 8px;
-  line-height: 50%;
-  text-transform: uppercase;
-  color: #fff;
-  display: inline-block;
-  padding: 10px 0 25px 10px;
-  position: relative;
-  vertical-align: sub;
-} */
 .submenu {
   position: absolute;
   top: 100%;

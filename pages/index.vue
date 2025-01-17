@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="bg-[url(/assets/img/nintendo.png)]">
-      <div class="bg-gradient-to-t from-black to-transparent">
+      <div class="bg-gradient-to-t from-black to-transparent pt-40 ">
         <!-- Card Nottícias capa -->
         <TheNewsImage
           borderColor="#fff"
           borderWidth="2"
-          class="w-7/12 pt-40 mx-auto"
+          class="w-7/12 mx-auto"
         >
           <div class="text-white w-4/6">
             <h2 class="text-[#fef500] font-bold bg-black w-fit rounded p-2">
@@ -39,14 +39,14 @@
                 <font-awesome icon="bolt-lightning" class="mr-3" />
                 MAIS DESTAQUES
               </h2>
-              <div class="flex gap-2  h-1/3 text-lg">
+              <div class="flex gap-2 h-1/3 text-lg">
                 <div
                   v-for="(button, id) in buttons"
                   :key="id"
                   class="text-nowrap"
                 >
                   <button
-                    class="shadow-md rounded py-2 px-5 uppercase "
+                    class="shadow-md rounded py-2 px-5 uppercase"
                     :class="[
                       submenu == button.name
                         ? 'bg-purple-700 text-[#fef500]'
@@ -121,14 +121,21 @@
               v-html="news?.categories[0]?.name"
               class="text-purple-700 font-extrabold text-sm"
             />
-            <h3 v-html="news?.title?.rendered" class="font-bold text-xl"></h3>
-            <div class="border-t border-[#8c8c8c]">
-              <p class="font-semibold">
+            <h3
+              v-html="news?.title?.rendered"
+              class="font-bold text-2xl py-3"
+            ></h3>
+            <div
+              class="py-2 border-t border-[#8c8c8c] list-[square] list-inside"
+            >
+              <p
+                class="text-nowrap font-semibold list-item marker:text-square marker:text-purple-700"
+              >
                 Por
                 <span class="underline mr-4">{{
                   news.author_meta.display_name
                 }}</span>
-                as {{ news.date }}
+                {{ formatDate(news.date) }} as {{ formatHours(news.date) }}
               </p>
             </div>
           </div>
@@ -155,11 +162,11 @@
             <div
               v-for="(news, id) in block1"
               :key="id"
-              class="flex items-center py-5"
+              class="flex items-center py-5 px-2"
             >
-              <div class="w-6/12 h-11/12 flex-shrink-0 relative">
+              <div class="w-6/12 h-11/12 flex-shrink-0">
                 <TheNewsImage :backgroundImage="news?.fimg_url[3]">
-                  <div class="relative inset-6 -inset-x-8 w-fit">
+                  <div class="relative lg:inset-6 lg:-inset-x-8 text-nowrap">
                     <span class="bg-[#fef500] text-xs font-extrabold px-2 py-1">
                       <font-awesome icon="bolt-lightning" class="pl-2" />
                       {{ news?.categories[0]?.name }}</span
@@ -185,14 +192,16 @@
             :style="{ backgroundImage: `url(${patternDiv})` }"
           ></div>
 
-          <div class="flex text-black text-2xl font-extrabold">
-            <font-awesome icon="bolt-lightning" class="py-1 px-3" />
+          <div
+            class="flex text-black text-2xl font-extrabold text-nowrap w-7/12"
+          >
+            <font-awesome icon="bolt-lightning" class="py-1 px-1" />
             <h2>AS MAIS LIDAS DA SEMANAS</h2>
           </div>
           <div
             v-for="(news, id) in block2"
             :key="id"
-            class="flex flex-row-reverse items-center py-5"
+            class="flex flex-row-reverse items-center py-5 px-2"
           >
             <div class="w-6/12 h-11/12 flex-shrink-0">
               <TheNewsImage :backgroundImage="news?.fimg_url[3]" />
@@ -203,8 +212,10 @@
                 class="text-purple-700 font-extrabold text-sm"
               />
               <h3 v-html="news?.title?.rendered" class="font-bold text-xl"></h3>
-              <div class="border-t border-[#8c8c8c]">
-                <p class="font-semibold">
+              <div class="border-t border-[#8c8c8c] list-[square] list-inside">
+                <p
+                  class="font-semibold list-item marker:text-square marker:text-purple-700"
+                >
                   Por
                   <span class="underline mr-4">{{
                     news.author_meta.display_name
@@ -222,11 +233,10 @@
     <div class="bg-[url(/assets/img/videosBg.jpg)]">
       <TheNewsTab
         title="podcasts e videos"
-        titleColor="white"
-        class="mx-auto w-7/12 py-10"
+        class="mx-auto w-7/12 py-10 text-white"
       >
         <template #mainNews>
-          <div class="flex h-56 border-b-2 border-white/50">
+          <div class="flex h-64 pb-5">
             <div
               class="p-3 container"
               v-for="(podcast, index) in block3"
@@ -234,14 +244,14 @@
             >
               <TheHighligth
                 :backgroundImage="podcast?.fimg_url[3]"
-                class="h-5/6 w-full"
+                class="h-5/6"
               />
-              <div class="flex items-center">
+              <div class="flex items-center py-2">
                 <font-awesome
                   icon="circle-play"
                   class="py-1 h-8 text-[#fef500]"
                 />
-                <h4 class="px-2 font-bold text-lg text-nowrap text-white">
+                <h4 class="px-2 font-extrabold text-lg text-white">
                   {{ podcast.title.rendered }}
                 </h4>
               </div>
@@ -249,11 +259,11 @@
           </div>
         </template>
         <template #learnMore>
-          <div class="flex py-5 px-1">
+          <div class="py-5 border-t-2 border-white/50">
             <a href="youtube.com" class="flex text-white p-2">
               <font-awesome
                 :icon="['fab', 'youtube']"
-                class="h-5 pt-1 text-[#fef500]"
+                class="h-7 text-[#fef500]"
               />
               <span class="px-3 text-xl font-extrabold"
                 >ACESSE NOSSO CANAL NO YOUTUBE</span
@@ -263,17 +273,17 @@
           </div>
         </template>
         <template #sideNews>
-          <div class="p-4">
+          <div class="flex flex-col gap-5 px-7">
             <div
               v-for="(video, index) in block4"
               :key="index"
-              class="flex container pb-5"
+              class="flex items-center container"
             >
               <TheHighligth
                 :backgroundImage="video?.fimg_url[3]"
-                class="h-20 w-44 flex-shrink-0"
+                class="xl:h-20 xl:w-44 flex-shrink-0"
               />
-              <div class="pl-4">
+              <div class="pl-4 2 w-fit">
                 <h4 class="text-sm font-extrabold text-[#fef500]">
                   {{ video.categories[1].name }}
                 </h4>
@@ -287,9 +297,9 @@
       </TheNewsTab>
     </div>
     <!--flow cards  -->
-    <TheNewsTab title="flow cards" class="container mx-auto w-7/12 py-10">
+    <TheNewsTab title="flow cards" class="mx-auto w-7/12 py-10">
       <template #mainNews>
-        <div class="flex h-56 border-b-2 border-white/50">
+        <div class="flex h-56 border-b-2 2 border-r-2 border-[#8c8c8c]/30">
           <div
             class="p-3 container"
             v-for="(podcast, index) in block3"
@@ -300,8 +310,7 @@
               class="h-5/6 w-full"
             />
             <div class="flex items-center">
-
-              <h4 class="px-2 font-bold text-lg text-nowrap ">
+              <h4 class="px-2 font-bold text-lg text-nowrap">
                 {{ podcast.title.rendered }}
               </h4>
             </div>
@@ -309,7 +318,9 @@
         </div>
       </template>
       <template #learnMore>
-        <div class="flex py-5 border-t-2 border-b-2 border-[#8c8c8c]/30">
+        <div
+          class="flex py-5 border-t-2 border-b-2 border-r-2 border-[#8c8c8c]/30"
+        >
           <a href="youtube.com" class="p-3">
             <span class="text-black text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
@@ -339,7 +350,7 @@
     <!-- previews -->
     <TheNewsTab title="previews" class="container mx-auto w-7/12 py-10">
       <template #mainNews>
-        <div class="flex h-56 border-b-2 border-white/50">
+        <div class="flex h-56 border-b-2 border-r-2 border-[#8c8c8c]/30">
           <div
             class="p-3 container"
             v-for="(podcast, index) in block3"
@@ -350,8 +361,7 @@
               class="h-5/6 w-full"
             />
             <div class="flex items-center">
-
-              <h4 class="px-2 font-bold text-lg text-nowrap ">
+              <h4 class="px-2 font-bold text-lg text-nowrap">
                 {{ podcast.title.rendered }}
               </h4>
             </div>
@@ -359,7 +369,9 @@
         </div>
       </template>
       <template #learnMore>
-        <div class="flex py-5 border-t-2 border-b-2 border-[#8c8c8c]/30">
+        <div
+          class="flex py-5 border-t-2 border-b-2 border-r-2 border-[#8c8c8c]/30"
+        >
           <a href="youtube.com" class="p-3">
             <span class="text-black text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
@@ -389,7 +401,7 @@
     <!-- dicas -->
     <TheNewsTab title="dicas" class="container mx-auto w-7/12 py-10">
       <template #mainNews>
-        <div class="flex h-56 border-b-2 border-white/50">
+        <div class="flex h-56 border-r border-[#8c8c8c]/30">
           <div
             class="p-3 container"
             v-for="(podcast, index) in block3"
@@ -400,7 +412,7 @@
               class="h-5/6 w-full"
             />
             <div class="flex items-center">
-              <h4 class="px-2 font-bold text-lg text-nowrap ">
+              <h4 class="px-2 font-bold text-lg text-nowrap">
                 {{ podcast.title.rendered }}
               </h4>
             </div>
@@ -408,7 +420,7 @@
         </div>
       </template>
       <template #learnMore>
-        <div class="flex py-5 border-t-2 border-b-2 border-[#8c8c8c]/30">
+        <div class="flex py-5 border-t border-b border-r border-[#8c8c8c]/30">
           <a href="youtube.com" class="p-3">
             <span class="text-black text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
@@ -444,6 +456,10 @@ import background from '@/assets/img/teste.jpg'
 import patternDiv from '@/assets/img/pattern-div.png'
 
 export default {
+  setup() {
+    const { formatDate, formatHours } = useDateTime()
+    return { formatDate, formatHours }
+  },
   data: () => ({
     background,
     patternDiv,
@@ -497,7 +513,7 @@ export default {
       )
       this.block4 = response.data
       console.log('bloco 4 ----', this.block4)
-    }
+    },
   },
   mounted () {
     this.loadNews()
