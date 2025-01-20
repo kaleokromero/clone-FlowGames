@@ -64,29 +64,7 @@
               </div>
             </div>
 
-            <ul class="p-5 list-disc text-white">
-              <TheHighligth
-                :backgroundImage="background"
-                class="mx-auto w-[13%] h-48"
-              >
-                <div class="text-white w-fit">
-                  <h2
-                    class="bg-black w-fit rounded p-2 text-[#fef500] text-xs font-bold"
-                  >
-                    TESTE
-                  </h2>
-                  <h1 class="font-bold text-xl">
-                    TITULO BOM MATERIA BOA TEXTO LONGO
-                  </h1>
-                </div>
-              </TheHighligth>
-
-              <div class="mx-auto w-1/12">
-                <li style="list-style-type: square">
-                  <p>por <span class="underline mr-2">kaleo</span> 20:99</p>
-                </li>
-              </div>
-            </ul>
+            <TheTrending :category="submenu" />
           </div>
           <p class="text-center text-xl font-extrabold text-white py-5">
             Viva o hype com a gente! Notícias, eventos, reviews, dicas, esportes
@@ -454,11 +432,16 @@
 import axios from 'axios'
 import background from '@/assets/img/teste.jpg'
 import patternDiv from '@/assets/img/pattern-div.png'
+import TheTrending from '@/components/news/TheTrending.vue'
+
 
 export default {
   setup() {
     const { formatDate, formatHours } = useDateTime()
     return { formatDate, formatHours }
+  },
+  components: {
+    TheTrending
   },
   data: () => ({
     background,
@@ -470,6 +453,7 @@ export default {
     ],
     submenus: ['games', 'esports', 'cultura pop'],
     newsBlock: [],
+    highligthNews: {},
     block1: {},
     block2: {},
     block3: {},
@@ -477,6 +461,12 @@ export default {
     submenu: 'games'
   }),
   methods: {
+    async loadHigligths() {
+
+    },
+    setHighligthNews (news) {
+      this.highligthNews = news
+    },
     async loadNews () {
       const config = useRuntimeConfig()
       const response = await axios.get(
