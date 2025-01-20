@@ -116,7 +116,7 @@
           <div class="w-6/12 h-11/12 flex-shrink-0">
             <TheNewsImage :backgroundImage="news?.fimg_url[3]" />
           </div>
-          <div class="pl-4">
+          <div class="pl-4 lex-grow flex flex-col justify-between">
             <h4
               v-html="news?.categories[0]?.name"
               class="text-purple-700 font-extrabold text-sm"
@@ -299,7 +299,7 @@
     <!--flow cards  -->
     <TheNewsTab title="flow cards" class="mx-auto w-7/12 py-10">
       <template #mainNews>
-        <div class="flex h-56 border-b-2 2 border-r-2 border-[#8c8c8c]/30">
+        <div class="flex h-56 border-r border-[#8c8c8c]/30">
           <div
             class="p-3 container"
             v-for="(podcast, index) in block3"
@@ -328,11 +328,11 @@
         </div>
       </template>
       <template #sideNews>
-        <div class="p-4">
+        <div class="p-3">
           <div
             v-for="(video, index) in block4"
             :key="index"
-            class="flex container pb-5"
+            class="flex container gap-5"
           >
             <TheHighligth
               :backgroundImage="video?.fimg_url[3]"

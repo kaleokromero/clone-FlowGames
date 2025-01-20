@@ -2,15 +2,13 @@
   <div class="sticky">
     <ul v-for="(item, id) in list" :key="id">
       <slot>
-        <li
-          style="
+        <li style="
             list-style-type: square;
             padding-top: 8px;
             font-weight: 800;
             font-size: 12px;
-          "
-        >
-          {{ item.name }}
+          ">
+          <a href="item.name">{{ item.name }}</a>
         </li>
       </slot>
     </ul>
@@ -22,6 +20,10 @@ export default {
   props: {
     list: {
       type: Array,
+      requirered: true
+    },
+    links: {
+      type: String,
       requirered: true
     }
   }
@@ -44,6 +46,7 @@ export default {
 .submenu[v-show='true'] {
   opacity: 1;
 }
+
 li::marker {
   color: yellow;
 }
