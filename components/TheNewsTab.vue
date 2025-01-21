@@ -5,14 +5,14 @@
       <h2 class="uppercase">{{ title }}</h2>
     </div>
     <!-- conteúdo  -->
-    <div class="grid grid-cols-6 container pt-5">
+    <div class="grid grid-cols-6 container pt-5" :class="bottomBorder ? 'border-b-2 border-[#8c8c8c];' : ''">
       <div class="col-span-4">
         <div>
           <slot name="mainNews"></slot>
         </div>
         <slot name="learnMore"></slot>
       </div>
-      <div class="col-span-2">
+      <div class="col-span-2" >
         <slot name="sideNews"></slot>
       </div>
     </div>
@@ -25,6 +25,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    bottomBorder: {
+      type: Boolean,
+      default: false
     }
   }
 }

@@ -1,31 +1,51 @@
 <template>
   <div>
     <div class="bg-[url(/assets/img/nintendo.png)]">
-      <div class="bg-gradient-to-t from-black to-transparent pt-40 ">
+      <div class="bg-gradient-to-t from-black to-transparent pt-40">
         <!-- Card Nottícias capa -->
         <TheNewsImage
           borderColor="#fff"
           borderWidth="2"
-          class="w-7/12 mx-auto"
+          class="w-7/12 mx-auto flex flex-col"
         >
-          <div class="text-white w-4/6">
-            <h2 class="text-[#fef500] font-bold bg-black w-fit rounded p-2">
-              TESTE
-            </h2>
-            <h1 class="font-bold text-5xl">
-              TITULO BOM MATERIA BOA TEXTO LONGO
-            </h1>
-            <h3 class="text-lg py-5">
-              Um bom subtitulo para chamar atenção vem aqui, mas ainda em
-              desencolcivimenti
-            </h3>
-          </div>
-          <div class="w-4/6 border-t border-gray-500 text-white">
-            <p class="font-semibold">
-              Por
-              <span class="underline mr-4">Kaleo</span>
-              as 10:50:01 07//07/2002
-            </p>
+          <div class="flex flex-row">
+            <div class="flex flex-col">
+              <div class="text-white w-4/6">
+                <h2 class="text-[#fef500] font-bold bg-black w-fit rounded p-2">
+                  TESTE
+                </h2>
+                <h1 class="font-bold text-5xl">
+                  TITULO BOM MATERIA BOA TEXTO LONGO
+                </h1>
+                <h3 class="text-lg py-5">
+                  Um bom subtitulo para chamar atenção vem aqui, mas ainda em
+                  desencolcivimenti
+                </h3>
+              </div>
+              <div class="w-4/6 border-t border-gray-500 text-white">
+                <p class="font-semibold">
+                  Por
+                  <span class="underline mr-4">Kaleo</span>
+                  as 10:50:01 07//07/2002
+                </p>
+              </div>
+            </div>
+
+            <div class="w-2/6 mx-auto flex items-end">
+              <div class="flex items-center w-full text-white">
+                <font-awesome icon="arrow-left" class="pr-5" />
+                <button class="w-4/12">
+                  <TheNewsImage
+                    borderColor="#fef500"
+                    borderWidth="8"
+                    shape="square"
+                    :backgroundImage="background"
+                    class="h-12 w-full"
+                  />
+                </button>
+                <font-awesome icon="arrow-right" class="pl-5" />
+              </div>
+            </div>
           </div>
         </TheNewsImage>
 
@@ -64,7 +84,7 @@
               </div>
             </div>
 
-            <TheTrending :category="submenu" />
+            <NewsTheTrending :category="submenu" class="flex items-center" />
           </div>
           <p class="text-center text-xl font-extrabold text-white py-5">
             Viva o hype com a gente! Notícias, eventos, reviews, dicas, esportes
@@ -89,19 +109,19 @@
         <div
           v-for="(news, id) in newsBlock"
           :key="id"
-          class="flex items-center py-5"
+          class="flex items-center flex-grow py-5"
         >
-          <div class="w-6/12 h-11/12 flex-shrink-0">
+          <div class="w-6/12 flex-shrink-0">
             <TheNewsImage :backgroundImage="news?.fimg_url[3]" />
           </div>
-          <div class="pl-4 lex-grow flex flex-col justify-between">
+          <div class="pl-4 h-9/12 container">
             <h4
               v-html="news?.categories[0]?.name"
               class="text-purple-700 font-extrabold text-sm"
             />
             <h3
               v-html="news?.title?.rendered"
-              class="font-bold text-2xl py-3"
+              class="font-bold text-xl overflow-hidden"
             ></h3>
             <div
               class="py-2 border-t border-[#8c8c8c] list-[square] list-inside"
@@ -182,7 +202,10 @@
             class="flex flex-row-reverse items-center py-5 px-2"
           >
             <div class="w-6/12 h-11/12 flex-shrink-0">
-              <TheNewsImage :backgroundImage="news?.fimg_url[3]" />
+              <TheNewsImage
+                :backgroundImage="news?.fimg_url[3]"
+                shape="square"
+              />
             </div>
             <div class="pr-4">
               <h4
@@ -209,7 +232,7 @@
     <!-- podcasts e videos -->
 
     <div class="bg-[url(/assets/img/videosBg.jpg)]">
-      <TheNewsTab
+      <LazyTheNewsTab
         title="podcasts e videos"
         class="mx-auto w-7/12 py-10 text-white"
       >
@@ -251,7 +274,7 @@
           </div>
         </template>
         <template #sideNews>
-          <div class="flex flex-col gap-5 px-7">
+          <div class="flex flex-col px-7">
             <div
               v-for="(video, index) in block4"
               :key="index"
@@ -272,10 +295,14 @@
             </div>
           </div>
         </template>
-      </TheNewsTab>
+      </LazyTheNewsTab>
     </div>
     <!--flow cards  -->
-    <TheNewsTab title="flow cards" class="mx-auto w-7/12 py-10">
+    <LazyTheNewsTab
+      title="flow cards"
+      class="mx-auto w-7/12 py-10"
+      bottom-border="true"
+    >
       <template #mainNews>
         <div class="flex h-56 border-r border-[#8c8c8c]/30">
           <div
@@ -296,9 +323,7 @@
         </div>
       </template>
       <template #learnMore>
-        <div
-          class="flex py-5 border-t-2 border-b-2 border-r-2 border-[#8c8c8c]/30"
-        >
+        <div class="flex py-5 border-t-2 border-r-2 border-[#8c8c8c]/30">
           <a href="youtube.com" class="p-3">
             <span class="text-black text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
@@ -310,7 +335,7 @@
           <div
             v-for="(video, index) in block4"
             :key="index"
-            class="flex container gap-5"
+            class="flex container pb-3"
           >
             <TheHighligth
               :backgroundImage="video?.fimg_url[3]"
@@ -324,9 +349,13 @@
           </div>
         </div>
       </template>
-    </TheNewsTab>
+    </LazyTheNewsTab>
     <!-- previews -->
-    <TheNewsTab title="previews" class="container mx-auto w-7/12 py-10">
+    <LazyTheNewsTab
+      title="previews"
+      class="container mx-auto w-7/12 py-10"
+      bottom-border="true"
+    >
       <template #mainNews>
         <div class="flex h-56 border-b-2 border-r-2 border-[#8c8c8c]/30">
           <div
@@ -347,10 +376,8 @@
         </div>
       </template>
       <template #learnMore>
-        <div
-          class="flex py-5 border-t-2 border-b-2 border-r-2 border-[#8c8c8c]/30"
-        >
-          <a href="youtube.com" class="p-3">
+        <div class="flex py-5 border-r-2 border-[#8c8c8c]/30">
+          <a href="youtube.com" class="py-3">
             <span class="text-black text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
           </a>
@@ -361,7 +388,7 @@
           <div
             v-for="(video, index) in block4"
             :key="index"
-            class="flex container pb-5"
+            class="flex container pb-3"
           >
             <TheHighligth
               :backgroundImage="video?.fimg_url[3]"
@@ -375,11 +402,15 @@
           </div>
         </div>
       </template>
-    </TheNewsTab>
+    </LazyTheNewsTab>
     <!-- dicas -->
-    <TheNewsTab title="dicas" class="container mx-auto w-7/12 py-10">
+    <LazyTheNewsTab
+      title="dicas"
+      class="container mx-auto w-7/12 py-10"
+      bottom-border="true"
+    >
       <template #mainNews>
-        <div class="flex h-56 border-r border-[#8c8c8c]/30">
+        <div class="flex h-56 border-b-2 border-r-2 border-[#8c8c8c]/30">
           <div
             class="p-3 container"
             v-for="(podcast, index) in block3"
@@ -398,8 +429,8 @@
         </div>
       </template>
       <template #learnMore>
-        <div class="flex py-5 border-t border-b border-r border-[#8c8c8c]/30">
-          <a href="youtube.com" class="p-3">
+        <div class="flex py-5 border-r-2 border-[#8c8c8c]/30">
+          <a href="youtube.com" class="py-3">
             <span class="text-black text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
           </a>
@@ -410,7 +441,7 @@
           <div
             v-for="(video, index) in block4"
             :key="index"
-            class="flex container pb-5"
+            class="flex container pb-3"
           >
             <TheHighligth
               :backgroundImage="video?.fimg_url[3]"
@@ -424,7 +455,7 @@
           </div>
         </div>
       </template>
-    </TheNewsTab>
+    </LazyTheNewsTab>
   </div>
 </template>
 
@@ -432,16 +463,11 @@
 import axios from 'axios'
 import background from '@/assets/img/teste.jpg'
 import patternDiv from '@/assets/img/pattern-div.png'
-import TheTrending from '@/components/news/TheTrending.vue'
-
 
 export default {
-  setup() {
+  setup () {
     const { formatDate, formatHours } = useDateTime()
     return { formatDate, formatHours }
-  },
-  components: {
-    TheTrending
   },
   data: () => ({
     background,
@@ -461,9 +487,6 @@ export default {
     submenu: 'games'
   }),
   methods: {
-    async loadHigligths() {
-
-    },
     setHighligthNews (news) {
       this.highligthNews = news
     },
@@ -503,7 +526,7 @@ export default {
       )
       this.block4 = response.data
       console.log('bloco 4 ----', this.block4)
-    },
+    }
   },
   mounted () {
     this.loadNews()
@@ -514,9 +537,3 @@ export default {
   }
 }
 </script>
-
-<style>
-ul li::marker {
-  color: yellow;
-}
-</style>
