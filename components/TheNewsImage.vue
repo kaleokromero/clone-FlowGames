@@ -2,7 +2,7 @@
   <div class="relative">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      :viewBox="shape"
+      viewBox="0 0 1131 462"
       :class="['relative']"
     >
       <defs>

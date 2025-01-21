@@ -12,6 +12,7 @@ export default defineNuxtConfig({
         'dollar-sign',
         'cart-shopping',
         'chevron-down',
+        'arrow-left',
         'arrow-right',
         'trophy',
         'film',
