@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div class="bg-[url(/assets/img/nintendo.png)]">
+    <div
+      v-for="(news, index) in mainNews"
+      :key="index"
+      v-show="currentNews == index"
+      :style="{backgroundImage: `url(${news?.fimg_url[3]})`}"
+    >
       <div class="bg-gradient-to-t from-black to-transparent pt-40">
         <!-- Card Nottícias capa -->
         <TheNewsImage
@@ -12,15 +17,12 @@
             <div class="flex flex-col">
               <div class="text-white w-4/6">
                 <h2 class="text-[#fef500] font-bold bg-black w-fit rounded p-2">
-                  TESTE
+                  {{ news?.categories[0]?.name }}
                 </h2>
                 <h1 class="font-bold text-5xl">
-                  TITULO BOM MATERIA BOA TEXTO LONGO
+                  {{ news?.title?.rendered }}
                 </h1>
-                <h3 class="text-lg py-5">
-                  Um bom subtitulo para chamar atenção vem aqui, mas ainda em
-                  desencolcivimenti
-                </h3>
+                <h3 v-html="news?.excerpt?.rendered" class="text-lg py-5"></h3>
               </div>
               <div class="w-4/6 border-t border-gray-500 text-white">
                 <p class="font-semibold">
@@ -34,12 +36,17 @@
             <div class="w-2/6 mx-auto flex items-end">
               <div class="flex items-center w-full text-white">
                 <font-awesome icon="arrow-left" class="pr-5" />
-                <button class="w-4/12">
+                <button
+                  v-for="(news, index) in mainNews"
+                  :key="index"
+                  @click="goToSlide(index)"
+                  class="w-4/12 mx-1 mt-3"
+                >
                   <TheNewsImage
                     borderColor="#fef500"
                     borderWidth="8"
                     shape="square"
-                    :backgroundImage="background"
+                    :backgroundImage="news?.fimg_url[3]"
                     class="h-12 w-full"
                   />
                 </button>
@@ -109,9 +116,9 @@
         <div
           v-for="(news, id) in newsBlock"
           :key="id"
-          class="flex items-center flex-grow py-5"
+          class="flex items-center flex-shrink-0 py-5"
         >
-          <div class="w-6/12 flex-shrink-0">
+          <div class="w-6/12">
             <TheNewsImage :backgroundImage="news?.fimg_url[3]" />
           </div>
           <div class="pl-4 h-9/12 container">
@@ -306,43 +313,41 @@
       <template #mainNews>
         <div class="flex h-56 border-r border-[#8c8c8c]/30">
           <div
-            class="p-3 container"
+            class="pr-3 pt-3 container w-11/12"
             v-for="(podcast, index) in block3"
             :key="index"
           >
             <TheHighligth
               :backgroundImage="podcast?.fimg_url[3]"
-              class="h-5/6 w-full"
+              class="h-5/6"
             />
-            <div class="flex items-center">
-              <h4 class="px-2 font-bold text-lg text-nowrap">
-                {{ podcast.title.rendered }}
-              </h4>
-            </div>
+            <h4 class="font-bold py-2 w-fit h-fit">
+              {{ podcast.title.rendered }}
+            </h4>
           </div>
         </div>
       </template>
       <template #learnMore>
-        <div class="flex py-5 border-t-2 border-r-2 border-[#8c8c8c]/30">
-          <a href="youtube.com" class="p-3">
+        <div class="flex py-3 border-t-2 border-r-2 border-[#8c8c8c]/30">
+          <a href="youtube.com" class="py-3">
             <span class="text-black text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
           </a>
         </div>
       </template>
       <template #sideNews>
-        <div class="p-3">
+        <div>
           <div
             v-for="(video, index) in block4"
             :key="index"
-            class="flex container pb-3"
+            class="flex container pl-3 pt-3"
           >
             <TheHighligth
               :backgroundImage="video?.fimg_url[3]"
               class="h-20 w-44 flex-shrink-0"
             />
             <div class="pl-4">
-              <h3 class="font-bold text-xl">
+              <h3 class="font-bold">
                 {{ video.title.rendered }}
               </h3>
             </div>
@@ -478,17 +483,32 @@ export default {
       { name: 'cultura pop', prefix: 'fa', icon: 'film' }
     ],
     submenus: ['games', 'esports', 'cultura pop'],
+    mainNews: {},
     newsBlock: [],
     highligthNews: {},
     block1: {},
     block2: {},
     block3: {},
     block4: {},
+    currentNews: 0,
     submenu: 'games'
   }),
   methods: {
+    nextSlide () {
+      this.currentNews = (this.currentNews + 1) % this.news.length
+    },
+    goToSlide (index) {
+      this.currentNews = index
+    },
     setHighligthNews (news) {
       this.highligthNews = news
+    },
+    async loadMainNews () {
+      const config = useRuntimeConfig()
+      const response = await axios.get(
+        `${config.public.apiUrl}/posts?categories=1&per_page=3`
+      )
+      this.mainNews = response.data
     },
     async loadNews () {
       const config = useRuntimeConfig()
@@ -534,6 +554,7 @@ export default {
     this.loadLatestNews()
     this.loadPodcasts()
     this.loadVideos()
+    this.loadMainNews()
   }
 }
 </script>
