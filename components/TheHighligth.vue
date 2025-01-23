@@ -2,6 +2,7 @@
   <div
     :style="{
       background: backgroundImage ? `url(${backgroundImage})` : 'transparent',
+      backgroundSize: 'cover',
       border: borderWidth ? `${borderWidth}px solid ${borderColor}` : 'none' ,
       position: 'relative'
     }"
