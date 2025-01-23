@@ -8,7 +8,7 @@
             font-weight: 800;
             font-size: 12px;
           ">
-          <a href="item.name">{{ item.name }}</a>
+          <a href="item.name" class="hover:border-b-4 hover:border-[#fef500]">{{ item.name }}</a>
         </li>
       </slot>
     </ul>
