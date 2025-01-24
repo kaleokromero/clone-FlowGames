@@ -4,6 +4,6 @@
     <div class="grow">
       <slot />
     </div>
-    <TheFooter/>
+    <AppFooter/>
   </div>
 </template>
