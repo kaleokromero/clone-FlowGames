@@ -6,21 +6,23 @@
           :key="id"
           class="p-5 list-disc text-white"
         >
-          <TheHighligth
+          <NewsImage
             :backgroundImage="news?.fimg_url[3]"
-            class="mx-auto w-64 h-48"
+            shape="square"
+            @click="navigateTo(news.link, {external: true})"
+            class="mx-auto w-64 h-48 cursor-pointer"
           >
-            <div class="text-white  inset-6 inset-x-8">
+            <div class="text-white inset-6 inset-x-8">
               <h2
                 class="bg-black w-fit rounded p-2 text-[#fef500] text-xs font-bold"
               >
                 {{ news.categories[0].name }}
               </h2>
-              <h1 class="font-bold text-xl">
+              <h1 class="font-bold text-xl line-clamp-3">
                 {{ news.title.rendered }}
               </h1>
             </div>
-          </TheHighligth>
+          </NewsImage>
   
           <div class="ms-5">
             <li style="list-style-type: square">
@@ -28,7 +30,7 @@
                 class="text-nowrap font-semibold list-item marker:text-square marker:text-[#fef500]"
               >
                 Por
-                <span class="underline mr-4">{{
+                <span class="underline mr-4 cursor-pointer">{{
                   news.author_meta.display_name
                 }}</span>
                 {{ formatDate(news.date) }} as {{ formatHours(news.date) }}
@@ -41,11 +43,13 @@
       <div v-else-if="category == 'esports'" class="flex mx-auto">
         <ul
           v-for="(news, id) in esports"
+          @click="navigateTo(news.link, {external: true})"
           :key="id"
           class="p-5 list-disc text-white"
         >
-          <TheHighligth
+          <NewsImage
             :backgroundImage="news?.fimg_url[3]"
+            shape="square"
             class="mx-auto w-64 h-48"
           >
             <div class="text-white w-fit">
@@ -58,7 +62,7 @@
                 {{ news.title.rendered }}
               </h1>
             </div>
-          </TheHighligth>
+          </NewsImage>
   
           <div class="ms-5">
             <li style="list-style-type: square">
@@ -66,7 +70,7 @@
                 class="text-nowrap font-semibold list-item marker:text-square marker:text-[#fef500]"
               >
                 Por
-                <span class="underline mr-4">{{
+                <span class="underline mr-4 cursor-pointer">{{
                   news.author_meta.display_name
                 }}</span>
                 {{ formatDate(news.date) }} as {{ formatHours(news.date) }}
@@ -79,10 +83,12 @@
       <div v-else-if="category == 'cultura pop'" class="flex mx-auto">
         <ul
           v-for="(news, id) in popCulture"
+          @click="navigateTo(news.link, {external: true})"
           :key="id"
           class="p-5 list-disc text-white"
         >
-          <TheHighligth
+          <NewsImage
+            shape="square"
             :backgroundImage="news?.fimg_url[3]"
             class="mx-auto w-64 h-48"
           >
@@ -96,7 +102,7 @@
                 {{ news.title.rendered }}
               </h1>
             </div>
-          </TheHighligth>
+          </NewsImage>
   
           <div class="ms-5">
             <li style="list-style-type: square">
@@ -104,7 +110,7 @@
                 class="text-nowrap font-semibold list-item marker:text-square marker:text-[#fef500]"
               >
                 Por
-                <span class="underline mr-4">{{
+                <span class="underline mr-4 cursor-pointer">{{
                   news.author_meta.display_name
                 }}</span>
                 {{ formatDate(news.date) }} as {{ formatHours(news.date) }}

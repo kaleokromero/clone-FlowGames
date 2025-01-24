@@ -22,22 +22,27 @@
                 <h2 class="text-[#fef500] font-bold bg-black w-fit rounded p-2">
                   {{ news?.categories[0]?.name }}
                 </h2>
-                <h1 class="font-bold text-5xl line-clamp-3">
-                  {{ news?.title?.rendered }}
-                </h1>
-                <div class="py-5">
-                  <h3
-                    v-html="news?.excerpt?.rendered"
-                    class="text-lg line-clamp-2"
-                  />
+                <div
+                  class="cursor-pointer"
+                  @click="navigateTo(news.link, { external: true })"
+                >
+                  <h1 class="font-bold text-5xl line-clamp-3">
+                    {{ news?.title?.rendered }}
+                  </h1>
+                  <div class="py-5">
+                    <h3
+                      v-html="news?.excerpt?.rendered"
+                      class="text-lg line-clamp-2"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="w-4/6 border-t border-gray-500 text-white">
                 <p class="font-semibold">
                   Por
-                  <span class="underline mr-4">{{
+                  <a class="underline mr-4 cursor-pointer">{{
                     news.author_meta.display_name
-                  }}</span>
+                  }}</a>
                   {{ formatDate(news.date) }} as {{ formatHours(news.date) }}
                 </p>
               </div>
@@ -103,9 +108,8 @@
                 </div>
               </div>
             </div>
-
-            <NewsTrending :category="submenu" class="flex items-center" />
           </div>
+          <NewsTrending :category="submenu" class=" w-7/12 mx-auto" />
           <p class="text-center text-xl font-extrabold text-white py-5">
             Viva o hype com a gente! Notícias, eventos, reviews, dicas, esportes
             e muito mais!
@@ -144,42 +148,46 @@
                 :borderWidth="4"
                 class="w-10/12 mx-auto flex flex-col bg-gradient-to-t from-black/30 via-black-60 to-transparent"
               >
-              <div class="flex flex-col relative">
-
-                <div class="text-white w-4/6 pt-3">
-                  <h2
-                    class="text-[#fef500] font-bold bg-black w-fit rounded p-2 text-sm"
-                  >
-                    {{ news?.categories[0]?.name }}
-                  </h2>
-                  <h1 class="font-bold text-lg line-clamp-3">
-                    {{ news?.title?.rendered }}
-                  </h1>
-                  <div class="py-1">
-                    <h3
-                      v-html="news?.excerpt?.rendered"
-                      class="text-sm line-clamp-2"
-                    />
+                <div class="flex flex-col relative">
+                  <div class="text-white w-4/6 pt-3">
+                    <h2
+                      class="text-[#fef500] font-bold bg-black w-fit rounded p-2 text-sm"
+                    >
+                      {{ news?.categories[0]?.name }}
+                    </h2>
+                    <div
+                      class="cursor-pointer"
+                      @click="navigateTo(news.link, { external: true })"
+                    >
+                      <h1 class="font-bold text-lg line-clamp-3">
+                        {{ news?.title?.rendered }}
+                      </h1>
+                      <h3
+                        v-html="news?.excerpt?.rendered"
+                        class="text-sm line-clamp-2 py-1"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div class="w-4/6 border-t border-gray-500 text-white">
-                  <p class="font-semibold text-sm">
-                    Por
-                    <span class="underline mr-4">{{
-                      news.author_meta.display_name
-                    }}</span>
-                    {{ formatDate(news.date) }} as {{ formatHours(news.date) }}
-                  </p>
-                </div>
+                  <div class="w-4/6 border-t border-gray-500 text-white">
+                    <p class="font-semibold text-sm">
+                      Por
+                      <span class="underline mr-4 cursor-pointer">{{
+                        news.author_meta.display_name
+                      }}</span>
+                      {{ formatDate(news.date) }} as
+                      {{ formatHours(news.date) }}
+                    </p>
+                  </div>
                 </div>
               </NewsImage>
             </div>
           </div>
           <div v-else class="flex grow w-[400px]">
-            <div class="flex">
+            <div class="flex cursor-pointer">
               <NewsImage
                 :backgroundImage="news?.fimg_url[3]"
                 class="h-fit w-64 grow"
+                @click="navigateTo(news.link, { external: true })"
               />
             </div>
             <div class="pl-4 h-9/12 container">
@@ -189,7 +197,8 @@
               />
               <h3
                 v-html="news?.title?.rendered"
-                class="font-bold text-xl overflow-hidden"
+                @click="navigateTo(news.link, { external: true })"
+                class="font-bold text-xl overflow-hidden cursor-pointer"
               ></h3>
               <div
                 class="py-2 border-t border-[#8c8c8c] list-[square] list-inside"
@@ -198,7 +207,7 @@
                   class="text-nowrap font-semibold list-item marker:text-square marker:text-purple-700"
                 >
                   Por
-                  <span class="underline mr-4">{{
+                  <span class="underline mr-4 cursor-pointer">{{
                     news.author_meta.display_name
                   }}</span>
                   {{ formatDate(news.date) }} as {{ formatHours(news.date) }}
@@ -229,7 +238,8 @@
             <div
               v-for="(news, id) in block1"
               :key="id"
-              class="flex items-center grow py-7 px-2"
+              @click="navigateTo(news.link, { external: true })"
+              class="flex items-center grow py-7 px-2 cursor-pointer"
             >
               <div class="w-6/12 h-11/12 flex-shrink-0">
                 <NewsImage :backgroundImage="news?.fimg_url[3]">
@@ -268,9 +278,10 @@
           <div
             v-for="(news, id) in block2"
             :key="id"
+            @click="navigateTo(news.link, { external: true })"
             class="flex grow flex-row-reverse items-center py-7 px-2"
           >
-            <div class="w-6/12 h-11/12 flex-shrink-0 flex grow">
+            <div class="w-6/12 h-11/12 flex-shrink-0 flex grow cursor-pointer">
               <NewsImage
                 :backgroundImage="news?.fimg_url[3]"
                 shape="square"
@@ -280,15 +291,18 @@
             <div class="pr-4">
               <h4
                 v-html="news?.categories[0]?.name"
-                class="text-purple-700 font-extrabold text-sm"
+                class="text-purple-700 font-extrabold text-sm cursor-pointer"
               />
-              <h3 v-html="news?.title?.rendered" class="font-bold text-xl"></h3>
+              <h3
+                v-html="news?.title?.rendered"
+                class="font-bold text-xl cursor-pointer"
+              ></h3>
               <div class="border-t border-[#8c8c8c] list-[square] list-inside">
                 <p
                   class="font-semibold list-item marker:text-square marker:text-purple-700"
                 >
                   Por
-                  <span class="underline mr-4">{{
+                  <span class="underline mr-4 cursor-pointer">{{
                     news.author_meta.display_name
                   }}</span>
                 </p>
@@ -309,29 +323,30 @@
         <template #mainNews>
           <div class="flex h-64 pb-5">
             <div
-              class="pr-3 pt-3 container grow"
+              class="pr-3 pt-3 container flex-1 cursor-pointer w-1/3"
               v-for="(podcast, index) in block3"
               :key="index"
+              @click="navigateTo(news.link, { external: true })"
             >
-              <TheHighligth
+              <NewsImage
                 :backgroundImage="podcast?.fimg_url[3]"
-                class="h-5/6"
+                class="h-44 relative"
               >
-                <div class="relative lg:-inset-y-28 lg:-inset-x-8 text-nowrap">
+                <div class="relative lg:-inset-y-20 lg:-inset-x-5 text-nowrap">
                   <span
-                    class="bg-black px-2 py-1 text-[#fef500] text-xs font-extrabold"
+                    class="bg-black px-2 py-1 text-[#fef500] text-sm font-extrabold"
                   >
                     {{ podcast?.categories[2]?.name }}</span
                   >
                 </div>
-              </TheHighligth>
-              <div class="flex items-center py-2">
+              </NewsImage>
+              <div class="flex relative items-center py-2">
                 <font-awesome
                   icon="circle-play"
                   class="py-1 h-8 text-[#fef500]"
                 />
                 <h4
-                  class="font-bold text-lg text-nowrap p-2 w-fit h-fit text-white"
+                  class="font-bold text-lg px-1"
                 >
                   {{ podcast.title.rendered }}
                 </h4>
@@ -357,9 +372,10 @@
           <div
             v-for="(video, index) in block4"
             :key="index"
-            class="flex container px-5 pt-3"
+            @click="navigateTo(news.link, { external: true })"
+            class="flex container px-5 pt-3 cursor-pointer"
           >
-            <TheHighligth
+            <NewsImage
               :backgroundImage="video?.fimg_url[3]"
               class="xl:h-20 xl:w-44 flex-shrink-0"
             />
@@ -384,15 +400,13 @@
       <template #mainNews>
         <div class="flex h-56 border-r border-[#8c8c8c]/30">
           <div
-            class="pr-3 pt-3 container w-11/12"
+            class="pr-3 pt-3 container w-11/12 cursor-pointer"
             v-for="(podcast, index) in block3"
+            @click="navigateTo(news.link, { external: true })"
             :key="index"
           >
-            <TheHighligth
-              :backgroundImage="podcast?.fimg_url[3]"
-              class="h-5/6"
-            />
-            <h4 class="font-bold py-2 w-fit h-fit">
+            <NewsImage :backgroundImage="podcast?.fimg_url[3]" class="h-5/6" />
+            <h4 class="font-bold text-lg w-fit h-fit">
               {{ podcast.title.rendered }}
             </h4>
           </div>
@@ -410,9 +424,10 @@
         <div
           v-for="(video, index) in block4"
           :key="index"
-          class="flex container pl-3 pt-3"
+          @click="navigateTo(news.link, { external: true })"
+          class="flex container pl-3 pt-3 cursor-pointer"
         >
-          <TheHighligth
+          <NewsImage
             :backgroundImage="video?.fimg_url[3]"
             class="h-20 w-44 flex-shrink-0"
           />
@@ -433,15 +448,13 @@
       <template #mainNews>
         <div class="flex h-56 border-b-2 border-r-2 border-[#8c8c8c]/30">
           <div
-            class="pr-3 pt-3 container w-11/12"
+            class="pr-3 pt-3 container w-11/12 cursor-pointer"
             v-for="(podcast, index) in block3"
+            @click="navigateTo(news.link, { external: true })"
             :key="index"
           >
-            <TheHighligth
-              :backgroundImage="podcast?.fimg_url[3]"
-              class="h-5/6"
-            />
-            <h4 class="font-bold py-2 w-fit h-fit">
+            <NewsImage :backgroundImage="podcast?.fimg_url[3]" class="h-5/6" />
+            <h4 class="font-bold text-lg w-fit h-fit">
               {{ podcast.title.rendered }}
             </h4>
           </div>
@@ -460,9 +473,10 @@
           <div
             v-for="(video, index) in block4"
             :key="index"
-            class="flex container pl-3 pt-3"
+            @click="navigateTo(news.link, { external: true })"
+            class="flex container pl-3 pt-3 cursor-pointer"
           >
-            <TheHighligth
+            <NewsImage
               :backgroundImage="video?.fimg_url[3]"
               class="h-20 w-44 flex-shrink-0"
             />
@@ -484,15 +498,13 @@
       <template #mainNews>
         <div class="flex h-56 border-b-2 border-r-2 border-[#8c8c8c]/30">
           <div
-            class="pr-3 pt-3 container w-11/12"
+            class="pr-3 pt-3 container w-11/12 cursor-pointer"
             v-for="(podcast, index) in block3"
+            @click="navigateTo(news.link, { external: true })"
             :key="index"
           >
-            <TheHighligth
-              :backgroundImage="podcast?.fimg_url[3]"
-              class="h-5/6"
-            />
-            <h4 class="font-bold py-2 w-fit h-fit">
+            <NewsImage :backgroundImage="podcast?.fimg_url[3]" class="h-5/6" />
+            <h4 class="font-bold text-lg w-fit h-fit">
               {{ podcast.title.rendered }}
             </h4>
           </div>
@@ -501,7 +513,7 @@
       <template #learnMore>
         <div class="flex py-3 border-r-2 border-[#8c8c8c]/30">
           <a href="youtube.com" class="py-3">
-            <span class="text-black text-xl font-extrabold">VER MAIS</span>
+            <span class="text-black text-xl my-2 font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
           </a>
         </div>
@@ -510,9 +522,10 @@
         <div
           v-for="(video, index) in block4"
           :key="index"
-          class="flex container pl-3 pt-3"
+          @click="navigateTo(news.link, { external: true })"
+          class="flex container pl-3 pt-3 cursor-pointer"
         >
-          <TheHighligth
+          <NewsImage
             :backgroundImage="video?.fimg_url[3]"
             class="h-20 w-44 flex-shrink-0"
           />
@@ -598,8 +611,7 @@ export default {
         `${config.public.apiUrl}/posts?categories=639&per_page=5`
       )
       this.block2 = response.data
-      console.log('bloco 2-------', response.data);
-      
+      console.log('bloco 2-------', response.data)
     },
     async loadPodcasts () {
       const config = useRuntimeConfig()
