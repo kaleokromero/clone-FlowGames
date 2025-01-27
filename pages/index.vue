@@ -76,7 +76,7 @@
 
         <!-- Destaques -->
         <div
-          class="backdrop-blur-md bg-gradient-to-t from-black/20 from-10% via-black/40 via-20% to-white/40 mt-12"
+          class="backdrop-blur-md bg-gradient-to-t from-black/20 dark:from-white/60 from-10% via-black/40 dark:via-white/50 via-20% to-white/40 mt-12"
         >
           <div class="mx-auto w-10/12 p-10">
             <div class="flex justify-around font-bold text-2xl">
