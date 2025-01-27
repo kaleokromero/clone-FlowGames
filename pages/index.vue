@@ -12,9 +12,9 @@
       <div class="bg-gradient-to-t from-black to-transparent pt-40">
         <!-- Card Nottícias capa -->
         <NewsImage
-          borderColor="#fff"
+          borderColor="white"
           :borderWidth="2"
-          class="w-7/12 mx-auto flex flex-col"
+          class="w-7/12 mx-auto"
         >
           <div class="flex flex-row">
             <div class="flex flex-col relative">
@@ -61,7 +61,7 @@
                 >
                   <NewsImage
                     borderColor="#fef500"
-                    :borderWidth="24"
+                    :borderWidth="8"
                     :backgroundImage="news?.fimg_url[3]"
                     class="h-12 w-24"
                   />
