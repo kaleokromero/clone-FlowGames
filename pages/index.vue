@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dark:bg-[#272828]">
     <div
       v-for="(news, index) in mainNews"
       :key="index"
@@ -59,9 +59,9 @@
                   @click="goToSlide(index)"
                   class="w-4/12 relative"
                 >
-                  <TheHighligth
+                  <NewsImage
                     borderColor="#fef500"
-                    :borderWidth="1"
+                    :borderWidth="24"
                     :backgroundImage="news?.fimg_url[3]"
                     class="h-12 w-24"
                   />
@@ -109,7 +109,7 @@
               </div>
             </div>
           </div>
-          <NewsTrending :category="submenu" class=" w-7/12 mx-auto" />
+          <NewsTrending :category="submenu" class="w-7/12 mx-auto" />
           <p class="text-center text-xl font-extrabold text-white py-5">
             Viva o hype com a gente! Notícias, eventos, reviews, dicas, esportes
             e muito mais!
@@ -126,14 +126,16 @@
       <!-- ultimas noticias -->
 
       <div class="col-span-5">
-        <div class="flex py-4 text-black text-2xl font-extrabold">
+        <div
+          class="flex py-4 text-black dark:text-white text-2xl font-extrabold"
+        >
           <font-awesome icon="bolt-lightning" class="py-1 pr-3" />
           <h2>ÚLTIMAS NOTÍCIAS</h2>
         </div>
         <div
           v-for="(news, index) in newsBlock"
           :key="index"
-          class="flex items-center flex-shrink-0 py-7"
+          class="flex items-center flex-shrink-0 py-7 dark:text-white"
         >
           <div v-if="index == 4 || index == 9" class="py-10">
             <div
@@ -228,10 +230,12 @@
 
       <!-- reviews -->
 
-      <div class="col-span-3 p-4 border-l-2 border-[#8c8c8c]/30">
+      <div
+        class="col-span-3 p-4 border-l-2 border-[#8c8c8c]/30 dark:text-white"
+      >
         <div class="pl-4">
           <div class="pb-10">
-            <div class="flex text-black text-2xl font-extrabold">
+            <div class="flex dark:text-white text-2xl font-extrabold">
               <font-awesome icon="bolt-lightning" class="py-1 px-3" />
               <h2>REVIEWS</h2>
             </div>
@@ -243,7 +247,9 @@
             >
               <div class="w-6/12 h-11/12 flex-shrink-0">
                 <NewsImage :backgroundImage="news?.fimg_url[3]">
-                  <div class="relative lg:inset-8 lg:-inset-x-8 text-nowrap">
+                  <div
+                    class="relative lg:inset-8 lg:-inset-x-8 text-nowrap text-black"
+                  >
                     <span class="bg-[#fef500] text-xs font-extrabold pr-2 py-1">
                       <font-awesome icon="bolt-lightning" class="pl-2" />
                       {{ news?.categories[0]?.name }}</span
@@ -266,12 +272,10 @@
 
           <div
             class="bg-repeat-x py-10"
-            :style="{ backgroundImage: `url(${patternDiv})` }"
+            :style="{ backgroundImage: `url(${patternDiv})`}"
           ></div>
 
-          <div
-            class="flex text-black text-2xl font-extrabold text-nowrap w-7/12"
-          >
+          <div class="flex text-2xl font-extrabold text-nowrap w-7/12">
             <font-awesome icon="bolt-lightning" class="py-1 px-3" />
             <h2>AS MAIS LIDAS DA SEMANAS</h2>
           </div>
@@ -345,9 +349,7 @@
                   icon="circle-play"
                   class="py-1 h-8 text-[#fef500]"
                 />
-                <h4
-                  class="font-bold text-lg px-1"
-                >
+                <h4 class="font-bold text-lg px-1">
                   {{ podcast.title.rendered }}
                 </h4>
               </div>
@@ -394,7 +396,7 @@
     <!--flow cards  -->
     <LazyNewsTab
       title="flow cards"
-      class="mx-auto w-7/12 py-10"
+      class="mx-auto w-7/12 py-10 dark:text-white"
       :bottomBorder="true"
     >
       <template #mainNews>
@@ -415,7 +417,7 @@
       <template #learnMore>
         <div class="flex py-3 border-t-2 border-r-2 border-[#8c8c8c]/30">
           <a href="youtube.com" class="py-3">
-            <span class="text-black text-xl font-extrabold">VER MAIS</span>
+            <span class="text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
           </a>
         </div>
@@ -442,7 +444,7 @@
     <!-- previews -->
     <LazyNewsTab
       title="previews"
-      class="container mx-auto w-7/12 py-10"
+      class="container mx-auto w-7/12 py-10 dark:text-white"
       :bottomBorder="true"
     >
       <template #mainNews>
@@ -463,7 +465,7 @@
       <template #learnMore>
         <div class="flex py-3 border-r-2 border-[#8c8c8c]/30">
           <a href="youtube.com" class="py-3">
-            <span class="text-black text-xl font-extrabold">VER MAIS</span>
+            <span class="text-xl font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
           </a>
         </div>
@@ -492,7 +494,7 @@
     <!-- dicas -->
     <LazyNewsTab
       title="dicas"
-      class="container mx-auto w-7/12 py-10"
+      class="container mx-auto w-7/12 py-10 dark:text-white"
       :bottomBorder="true"
     >
       <template #mainNews>
@@ -513,7 +515,7 @@
       <template #learnMore>
         <div class="flex py-3 border-r-2 border-[#8c8c8c]/30">
           <a href="youtube.com" class="py-3">
-            <span class="text-black text-xl my-2 font-extrabold">VER MAIS</span>
+            <span class="text-xl my-2 font-extrabold">VER MAIS</span>
             <font-awesome icon="arrow-right" class="text-purple-700 pl-4 h-5" />
           </a>
         </div>

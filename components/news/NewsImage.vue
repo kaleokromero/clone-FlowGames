@@ -132,7 +132,7 @@ export default {
     },
     borderColor: {
       type: String,
-      default: ''
+      default: null 
     },
     borderWidth: {
       type: Number,
