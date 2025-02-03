@@ -9,7 +9,7 @@
         backgroundSize: 'cover'
       }"
     >
-      <div class="bg-gradient-to-t from-black to-transparent pt-40">
+      <div class="bg-gradient-to-t from-black to-transparent pt-44">
         <!-- Card Nottícias capa -->
         <NewsImage
           borderColor="white"
@@ -37,8 +37,8 @@
                   </div>
                 </div>
               </div>
-              <div class="w-4/6 border-t border-gray-500 text-white">
-                <p class="font-semibold">
+              <div class="w-5/6 border-t border-gray-500 text-white">
+                <p class="font-semibold mt-2">
                   Por
                   <a class="underline mr-4 cursor-pointer">{{
                     news.author_meta.display_name
@@ -48,7 +48,7 @@
               </div>
             </div>
 
-            <div class="w-2/6 mx-auto flex items-end">
+            <div class="w-2/6 mt-4 flex items-end">
               <div class="flex items-center w-full text-white">
                 <button @click="previousSlide()">
                   <font-awesome icon="arrow-left" class="pr-5" />
@@ -76,7 +76,7 @@
 
         <!-- Destaques -->
         <div
-          class="backdrop-blur-md bg-gradient-to-t from-black/20 dark:from-white/60 from-10% via-black/40 dark:via-white/50 via-20% to-white/40 mt-12"
+          class="backdrop-blur-md bg-gradient-to-t from-black/20 dark:bg-gradient-to-b dark:from-white/40 from-10% via-black/40 dark:via-white/50 via-20% to-white/40 mt-12"
         >
           <div class="mx-auto w-10/12 p-10">
             <div class="flex justify-around font-bold text-2xl">
@@ -110,7 +110,7 @@
             </div>
           </div>
           <NewsTrending :category="submenu" class="w-7/12 mx-auto" />
-          <p class="text-center text-xl font-extrabold text-white py-5">
+          <p class="text-center  font-extrabold text-white py-5 dark:bg-[#222]">
             Viva o hype com a gente! Notícias, eventos, reviews, dicas, esportes
             e muito mais!
           </p>

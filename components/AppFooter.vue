@@ -6,7 +6,7 @@
         class="bg-purple-600 w-full"
       />
   
-      <div class="bg-[#131313] p-10">
+      <div class="bg-[#131313] p-5">
         <div
           class="bg-[url('/assets/img/footer-background.jpg')] container justify-self-center"
         >
