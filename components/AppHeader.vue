@@ -42,7 +42,7 @@
           <span
             v-for="(item, id) in menu"
             :key="id"
-            class="teste relative text-nowrap"
+            class="gill relative text-nowrap"
             @mouseenter="item.submenu = true"
             @mouseleave="item.submenu = false"
           >

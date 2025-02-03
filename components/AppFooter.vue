@@ -12,7 +12,7 @@
         >
           <div class="grid grid-cols-6 text-white px-10">
             <div class="py-5" v-for="(content, id) in information" :key="id">
-              <h1 class="teste-xg">{{ content.partner }}</h1>
+              <h1 class="gill-xg">{{ content.partner }}</h1>
               <ul class="mb-5">
                 <li
                   v-for="(options, id) in content.options"
@@ -29,7 +29,7 @@
               <div class="flex">
                 <font-awesome icon="bolt-lightning" class="h-7 mt-2" />
                 <div>
-                  <h1 class="teste-xg">CADASTRE-SE EM NOSSA NEWSLETTER</h1>
+                  <h1 class="gill-xg">CADASTRE-SE EM NOSSA NEWSLETTER</h1>
                   <TheInput  class="py-10"/>
                 </div>
               </div>
