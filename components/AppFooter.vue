@@ -10,7 +10,7 @@
         <div
           class="bg-[url('/assets/img/footer-background.jpg')] container justify-self-center"
         >
-          <div class="grid grid-cols-6 text-white px-10">
+          <div class="grid grid-cols-6 text-white ">
             <div class="py-5" v-for="(content, id) in information" :key="id">
               <h1 class="gill-xg">{{ content.partner }}</h1>
               <ul class="mb-5">
@@ -35,7 +35,7 @@
               </div>
             </div>
           </div>
-          <AppCopyright class="border-t border-[#8c8c8c] text-white font-semibold"/>
+          <AppCopyright class="border-t border-[#8c8c8c] dark:border-none text-white font-semibold"/>
         </div>
       </div>
     </div>
