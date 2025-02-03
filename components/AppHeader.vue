@@ -24,12 +24,22 @@
             </a>
           </div>
           <div class="flex items-center">
-            <input
-              v-if="searchBar"
-              type="text"
-              class="bg-transparent text-lg font-normal text-[#8c8c8c]"
-              placeholder="O que você procura?"
-            />
+            <Transition
+              enter-from-class="translate-x-1/2 opacity-0"
+              enter-active-class="transition-all duration-[0.5s] ease-out"
+              enter-to-class="translate-x-0 opacity-100"
+              leave-from-class="translate-x-0 opacity-100"
+              leave-active-class="transition-all duration-[0.5s] ease-in"
+              leave-to-class="translate-x-1/2 opacity-0"
+            >
+              <input
+                v-if="searchBar"
+                key="search-input"
+                type="text"
+                class="bg-transparent text-lg font-normal text-[#8c8c8c] mr-2"
+                placeholder="O que você procura?"
+              />
+            </Transition>
             <button @click="searchBar = !searchBar" class="px-5 pt-1">
               <font-awesome
                 icon="magnifying-glass"
