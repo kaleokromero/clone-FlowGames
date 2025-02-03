@@ -7,7 +7,7 @@
           <input
             id="email"
             type="email"
-            class="bg-transparent w-3/5"
+            class="bg-transparent outline-none w-3/5"
           />
         </span>
           <button

@@ -57,11 +57,11 @@
                   v-for="(news, index) in mainNews"
                   :key="index"
                   @click="goToSlide(index)"
-                  class="w-4/12 relative"
+                  class="w-4/12 relative mx-[1px]"
                 >
                   <NewsImage
                     borderColor="#fef500"
-                    :borderWidth="8"
+                    :borderWidth="12"
                     :backgroundImage="news?.fimg_url[3]"
                     class="h-12 w-24"
                   />
@@ -135,11 +135,11 @@
         <div
           v-for="(news, index) in newsBlock"
           :key="index"
-          class="flex items-center flex-shrink-0 py-7 dark:text-white"
+          class="flex items-center flex-1 relative py-7 dark:text-white"
         >
-          <div v-if="index == 4 || index == 9" class="py-10">
+          <div v-if="index == 4 || index == 9" class="py-10 w-full">
             <div
-              class="lg:h-96 lg:w-[700px] flex items-center"
+              class="lg:h-96 max-w-[90%] flex items-center flex-1 relative"
               :style="{
                 backgroundImage: `url(${news?.fimg_url[3]})`,
                 backgroundSize: 'cover'
@@ -184,7 +184,7 @@
               </NewsImage>
             </div>
           </div>
-          <div v-else class="flex grow w-[400px]">
+          <div v-else class="flex grow relative max-w-[90%]">
             <div class="flex cursor-pointer">
               <NewsImage
                 :backgroundImage="news?.fimg_url[3]"
@@ -192,7 +192,7 @@
                 @click="navigateTo(news.link, { external: true })"
               />
             </div>
-            <div class="pl-4 h-9/12 container">
+            <div class="pl-4 h-9/12 container relative">
               <h4
                 v-html="news?.categories[0]?.name"
                 class="text-purple-700 font-extrabold text-sm"
@@ -402,13 +402,13 @@
       <template #mainNews>
         <div class="flex h-56 border-r border-[#8c8c8c]/30">
           <div
-            class="pr-3 pt-3 container w-11/12 cursor-pointer"
+            class="pr-3 pt-3 w-11/12 cursor-pointer"
             v-for="(podcast, index) in block3"
             @click="navigateTo(news.link, { external: true })"
             :key="index"
           >
             <NewsImage :backgroundImage="podcast?.fimg_url[3]" class="h-5/6" />
-            <h4 class="font-bold text-lg w-fit h-fit">
+            <h4 class="font-bold text-lg">
               {{ podcast.title.rendered }}
             </h4>
           </div>

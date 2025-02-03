@@ -36,7 +36,7 @@
                 v-if="searchBar"
                 key="search-input"
                 type="text"
-                class="bg-transparent text-lg font-normal text-[#8c8c8c] mr-2"
+                class="bg-transparent outline-none text-lg font-normal text-white mr-2"
                 placeholder="O que você procura?"
               />
             </Transition>
